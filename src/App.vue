@@ -42,8 +42,8 @@ export default {
     return{
       routers:[
         {name: "home", path: "/" },
-        {name: "about", path: "/about" },
-        {name: "contactUs", path: "/contactUs" },
+        {name: "Login", path: "/Login" },
+        {name: "alumnos", path: "/alumnos" },
         {name: "how are", path: "/howare" }
       ]
     }
