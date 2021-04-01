@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 
 
 Vue.use(Vuex)
@@ -12,10 +13,10 @@ export default new Vuex.Store({
   },
   actions: {
     async Get_Mysql(store, pk) {
-      const res = await fetch(`http://localhost:3000/alumnos/${pk}`)
-      const json = await res.json()
-      this.state.db = json
-      console.log(json);
+      axios
+      .get(`http://localhost:3000/peliculas`)
+      .then(response => (this.state.db = response.data, console.log(response))
+      )
     }
   },
   modules: {
