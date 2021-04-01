@@ -95,6 +95,7 @@ export default {
     text-align: center;
 }
 .card-movie{
+    height: auto !important;
     .title-movie{
         text-transform: uppercase;
         font: 10px !important;

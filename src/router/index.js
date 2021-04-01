@@ -20,9 +20,19 @@ const routes = [
     component: () => import('../views/infoPelicula.vue')
   },
   {
-    path: '/categoria/:id',
-    name: 'categoria',
-    component: () => import('../views/categoria.vue')
+    path: '/categorias/:category',
+    name: 'categorias',
+    component: () => import('../views/categorias.vue')
+  },
+  {
+    path: '/populares',
+    name: 'populares',
+    component: () => import('../views/populares.vue')
+  },
+  {
+    path: '/Recientes',
+    name: 'Recientes',
+    component: () => import('../views/Recientes.vue')
   }
 ]
 
