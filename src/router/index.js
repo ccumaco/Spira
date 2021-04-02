@@ -33,6 +33,11 @@ const routes = [
     path: '/Recientes',
     name: 'Recientes',
     component: () => import('../views/Recientes.vue')
+  },
+  {
+    path: '/favoritas',
+    name: 'favoritas',
+    component: () => import('../views/favoritas.vue')
   }
 ]
 
