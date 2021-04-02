@@ -35,8 +35,7 @@ export default {
     return {
       routers: [
         { name: "home", path: "/" },
-        { name: "peliculas", path: "/peliculas" },
-        { name: "how are ", path: "/howare" },
+        { name: "peliculas", path: "/peliculas" }
       ],
     };
   },

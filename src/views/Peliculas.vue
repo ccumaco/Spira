@@ -56,6 +56,12 @@
                                 Ver mas info
                             </v-btn>
                         </router-link>
+                            <v-btn
+                                class="btn-movie"
+                                @click="deleteMovie(item.id)"
+                            >
+                                Eliminar
+                            </v-btn>
                     </v-card-actions>
                 </v-card>
             </v-col>
@@ -65,6 +71,7 @@
 </template>
 <script>
 
+import axios from 'axios'
 import { mapActions, mapState} from 'vuex'
 
 export default {
@@ -73,18 +80,26 @@ export default {
         return{
             test: [ { "id": 1, "name": "King Kong", "description": "Definitivamente, la gran película de aventuras de la historia del cine y más si teneos en cuenta que no tiene origen literario. Hablamos de un mito del séptimo arte que, pese a lo primitivo de los efectos especiales, sigue siendo la versión más apasionante y entretenida de la historia.", "timeMovie": "2H 4M", "category": "Acción", "trailer": "https://www.youtube.com/watch?v=4Rfajl3bFFM", "suggestions": null, "active": 1, "cover": "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/480/public/media/image/2016/11/kong-skull-island-poster_0.jpg?itok=giO2IDyq", "favorite": 0, "creationDate": "1993-07-24T05:50:00.000Z", "stars": 3, "calification": 3 }, { "id": 2, "name": "pelicula Test", "description": "lorem text lorem text lorem text lorem text lorem text lorem text lorem text", "timeMovie": "", "category": "Terror", "trailer": "https://www.youtube.com/watch?v=4Rfajl3bFFM", "suggestions": null, "active": 1, "cover": "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/480/public/media/image/2016/11/kong-skull-island-poster_0.jpg?itok=giO2IDyq", "favorite": 0, "creationDate": "2021-03-21T04:59:59.000Z", "stars": 5, "calification": 5 }, { "id": 3, "name": "Vengadores", "description": "La agente de SHIELD Natasha Romanoff, alias la Viuda Negra (Scarlett Johansson), es una de las mejores espías del mundo y, probablemente, la más exper", "timeMovie": "3H 2M", "category": "Acción", "trailer": "https://www.youtube.com/watch?v=HQIiYqOVTWo", "suggestions": null, "active": 1, "cover": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiC3mSrAdG2_Tkuz5CbCm2TA-wYikac3dOPVlzb5jCk1gqsHOD", "favorite": 1, "creationDate": "2015-05-23T04:56:00.000Z", "stars": 5, "calification": 5 }, { "id": 4, "name": "pelicula Test4", "description": "lorem text lorem text lorem text lorem text lorem text lorem text lorem text", "timeMovie": "", "category": "Terror", "trailer": "https://www.youtube.com/watch?v=4Rfajl3bFFM", "suggestions": null, "active": 1, "cover": null, "favorite": 0, "creationDate": "2021-03-21T04:59:59.000Z", "stars": 2, "calification": 3 }, { "id": 44, "name": "pelicula Test5", "description": "lorem text lorem text lorem text lorem text lorem text lorem text lorem text", "timeMovie": "", "category": "Terror", "trailer": "https://www.youtube.com/watch?v=4Rfajl3bFFM", "suggestions": null, "active": 1, "cover": null, "favorite": 0, "creationDate": "2021-03-21T04:59:59.000Z", "stars": 3, "calification": 4 }, { "id": 54, "name": "", "description": null, "timeMovie": "", "category": "", "trailer": null, "suggestions": null, "active": 1, "cover": null, "favorite": 0, "creationDate": "0000-00-00 00:00:00", "stars": 1, "calification": 1 } ]
         }
-  },
-  mounted(){
-      this.Get_Mysql(1)
-  },
-  computed:{
-      ...mapState(['db'])
-  },
-  methods:{
-      ...mapActions([
-          'Get_Mysql'
-      ])
-  },
+    },
+    mounted(){
+        this.Get_Mysql(1)
+    },
+    computed:{
+        ...mapState(['db'])
+    },
+    methods:{
+        ...mapActions([
+            'Get_Mysql'
+        ]),
+        deleteMovie (id) {
+            console.log(this.$route.params.id)
+            axios
+                .delete(`http://localhost:3000/delete/${id}`)
+                .then(
+                    (response) => ((this.data = response.data),this.Get_Mysql)
+                );
+        }
+    },
 
     
 }

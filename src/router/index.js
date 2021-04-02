@@ -27,7 +27,7 @@ const routes = [
   {
     path: '/populares',
     name: 'populares',
-    component: () => import('../views/populares.vue')
+    component: () => import('../views/Populares.vue')
   },
   {
     path: '/Recientes',
