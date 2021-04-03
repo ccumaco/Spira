@@ -28,7 +28,6 @@
         </v-col>
       </v-card>
     </v-row>
-    <pre>{{ data }}</pre>
   </div>
 </template>
 <script>
