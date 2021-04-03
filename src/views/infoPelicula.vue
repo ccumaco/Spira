@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="contenedor-principal">
     <h1>{{ data.name }}</h1>
     <iframe
       width="600px"
@@ -46,7 +46,7 @@ export default {
 };
 </script>
 <style lang="scss">
-*{
+.contenedor-principal{
     text-align: center;
 }
 </style>
