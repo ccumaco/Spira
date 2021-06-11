@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col md="6" lg="6" class="form-movie">
-        <h1>Crear Maestro</h1>
+        <h1 class="mb-4 mt-2">CREAR MAESTRO</h1>
         <v-text-field outlined label="Nombre" v-model="nombre"></v-text-field>
         <v-text-field outlined label="apellido" v-model="apellido"></v-text-field>
         <v-select
@@ -19,7 +19,7 @@
         <v-text-field outlined label="salario" v-model="salario"></v-text-field>
         <v-text-field outlined label="calificacion" v-model="calificacion"></v-text-field>
         <p>{{mensaje}}</p>
-        <v-btn @click="createTeacher()" class="btn-addmovie">crearMaestro</v-btn>
+        <v-btn @click="createTeacher()" class="btn-addmovie">crear maestro</v-btn>
       </v-col>
     </v-row>
   </div>
@@ -121,7 +121,7 @@ export default {
 }
 .btn-addmovie{
     margin: 0 auto;
-    background-color: blue !important;
+    background-color: rgb(0, 170, 182) !important;
     color: #fff !important;
 }
 </style>

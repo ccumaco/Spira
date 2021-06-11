@@ -4,6 +4,7 @@
       <v-col cols="6">
         <div class="container-personal">
           <v-img
+            class="imagen-profile"
             width="100%"
             contain
             src="https://www.w3schools.com/howto/img_avatar.png"
@@ -56,16 +57,17 @@ export default {
       mensaje: "",
       route: this.$route.params.id,
       data: null,
+      materias: []
     };
   },
   methods:{
     gerTeacher(){
       axios
-        .get(`http://localhost:3000/1`)
+        .get(`http://localhost:3000/${this.route}`)
       .then(
           (response) => (
             this.data = response.data,
-            console.log(this.materias)
+            console.log(response.data)
           )
         )
         .catch(function(error) {
@@ -113,11 +115,17 @@ export default {
 <style lang="scss">
 .container-personal{
     text-align: center;
+    border-radius: 10px;
     border: 1px solid grey;
     width: 50%;
     margin: 0 auto;
     background: url(https://i.pinimg.com/originals/cf/b3/68/cfb368fd351c9efe8a6bb25e6e2099e8.jpg);
     background-size: cover;
+    .imagen-profile{
+      object-fit: contain;
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+    }
     h2{
       font-weight: bold;
       text-transform: uppercase;

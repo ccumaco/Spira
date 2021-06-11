@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h1 class="title-home">Ver informacion de los maestros</h1>
+    <h1 class="title-home mb-10 mt-10">Ver información de los maestros</h1>
     <v-row class="pr-5 pl-5">
       <v-col md="3" lg="3" v-for="(item, index) of data" :key="index">
         <v-card elevation="6" class="card-movie" max-width="374">
-          <div class="contain-img-movie py-4">
+          <div class="contain-img-movie pb-4">
             <v-img
-              height="300"
-              contain
+              height="100%"
+              cover
               src="https://www.w3schools.com/howto/img_avatar.png"
               alt="profile fake"
             ></v-img>
@@ -50,7 +50,7 @@
               <v-btn class="btn-movie"> editar </v-btn>
             </router-link>
             <v-spacer></v-spacer>
-            <v-btn class="btn-movie" @click="deleteMovie(item.idmaestros)">
+            <v-btn class="btn-movie eliminar" @click="deleteMovie(item.idmaestros)">
               Eliminar
             </v-btn>
           </v-card-actions>
@@ -94,15 +94,17 @@ export default {
   text-align: center;
 }
 .card-movie {
+  border-radius: 10px;
   height: auto !important;
+  background-color: #0e2e4e !important;
   .title-movie {
     text-transform: uppercase;
     font: 10px !important;
     color: #fff;
   }
-  background-color: rgba(#000, 0.5) !important;
   .contain-img-movie {
-    background-color: #000;
+    border-radius: 10px 10px 0 0;
+    background-color: #0e2a46;
     width: 100%;
   }
   .description-movie-title {
@@ -128,9 +130,12 @@ export default {
   .router-movie {
     text-decoration: none;
     .btn-movie {
-      background-color: red !important;
+      background-color: #b723d6 !important;
       color: #fff !important;
     }
   }
+}
+.eliminar span {
+  color: grey;
 }
 </style>

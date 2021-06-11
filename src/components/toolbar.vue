@@ -38,7 +38,7 @@ export default {
     text-decoration: none;
     margin: 0 4px;
     .btn-routes{
-        background-color: blue !important;
+        background-color: rgb(0, 170, 182) !important;
     }
 }
 </style>
