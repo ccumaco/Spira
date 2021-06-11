@@ -1,36 +1,25 @@
 <template>
   <div>
-    <h1 class="title-home">Disfruta de nuestras categorias</h1>
-    <v-row>
-      <v-col
-        md="2"
-        lg="2"
-        v-for="(item, index) of categories"
-        :key="index"
-        class="col-category"
-      >
-        <router-link class="route-circle" :to="item.route">
-          <div
-            :style="`background-color: ${item.color}`"
-            class="circle-categories"
-          >
-            <span>{{ item.name }}</span>
-          </div>
-          <span class="name-category">{{ item.categories }}</span>
-        </router-link>
-      </v-col>
-    </v-row>
     <v-row>
       <v-col md="6" lg="6" class="form-movie">
-        <h1>Crea tu pelicula</h1>
-        <v-text-field outlined label="Nombre Pelicula" v-model="name"></v-text-field>
-        <v-text-field outlined label="Descripción" v-model="description"></v-text-field>
-        <v-text-field outlined label="Tiempo Pelicula" v-model="timeMovie"></v-text-field>
-        <v-text-field outlined label="Categorias" v-model="category"></v-text-field>
-        <v-text-field outlined label="Trailer" v-model="trailer"></v-text-field>
-        <v-text-field outlined label="Imagen" v-model="cover"></v-text-field>
-        <span>{{mensaje}}</span>
-        <v-btn @click="createMovie()" class="btn-addmovie">Agregar Pelicula</v-btn>
+        <h1>Crear Maestro</h1>
+        <v-text-field outlined label="Nombre" v-model="nombre"></v-text-field>
+        <v-text-field outlined label="apellido" v-model="apellido"></v-text-field>
+        <v-select
+          v-model="materias[0]"
+          :hint="`${materias.nombreMateria}, ${materias.idmaterias}`"
+          :items="materias"
+          item-text="nombreMateria"
+          item-value="idmaterias"
+          label="materias"
+          outlined
+          return-object
+        ></v-select>
+        <v-text-field outlined label="edad" v-model="edad"></v-text-field>
+        <v-text-field outlined label="salario" v-model="salario"></v-text-field>
+        <v-text-field outlined label="calificacion" v-model="calificacion"></v-text-field>
+        <p>{{mensaje}}</p>
+        <v-btn @click="createTeacher()" class="btn-addmovie">crearMaestro</v-btn>
       </v-col>
     </v-row>
   </div>
@@ -40,105 +29,68 @@
 import axios from 'axios'
 
 export default {
-  name: "infoPelicula",
+  nombre: "infoPelicula",
   data() {
     return {
+      calificacion: 0,
+      materias: [],
       route: this.$route.params.id,
       id: 0,
-      name: "nobre desde pagina",
-      description: "descripcion prueba",
-      timeMovie: "4H 30M",
-      category: "terror",
-      trailer: "https://www.youtube.com/embed/xs4fxZYtalE",
+      nombre: "maestro",
+      materia_id: 3,
+      apellido: "apellido test",
+      edad: 30,
+      salario: 80000,
       suggestions: null,
-      active: 1,
       cover: "https://images-na.ssl-images-amazon.com/images/I/911IouavlPL._SL1500_.jpg",
-      favorite: 0,
       creationDate: "2021-04-02 23:59:59",
       mensaje: "",
-      categories: [
-        {
-          name: "T",
-          categories: "terror",
-          route: "/categorias/terror",
-          color: "red",
-        },
-        {
-          name: "A",
-          categories: "accion",
-          route: "/categorias/accion",
-          color: "blue",
-        },
-        {
-          name: "F",
-          categories: "ficcion",
-          route: "/categorias/ficcion",
-          color: "brown",
-        },
-        {
-          name: "S",
-          categories: "Recientes",
-          route: "/Recientes",
-          color: "green",
-        },
-        {
-          name: "P",
-          categories: "Populares",
-          route: "/populares",
-          color: "grey",
-        },
-        {
-          name: "F",
-          categories: "tus Favoritas",
-          route: "/favoritas",
-          color: "yellow",
-        },
-      ],
     };
   },
   methods: {
-    createMovie() {
+    createTeacher() {
       axios
-        .post("http://localhost:3000/crear-pelicula", {
-            id: this.id,
-            name: this.name,
-            description: this.description,
-            timeMovie: this.timeMovie,
-            category: this.category,
-            trailer: this.trailer,
-            suggestions: null,
-            active: 1,
-            cover: this.cover,
-            favorite: this.favorite,
-            creationDate: this.creationDate,
+        .post("http://localhost:3000/maestro", {
+            idmaestros: this.id,
+            nombre: this.nombre,
+            materia_id: this.materias[0].idmaterias,
+            apellido: this.apellido,
+            edad: this.edad,
+            salario: this.salario,
+            calificacion: this.calificacion,
         })
-        .then(function(response) {
-          this.mensaje = "creada con exito",
-          console.log(response)
-        })
+        .then(
+          (response) => (
+            (this.mensaje = 'creado con exito'),
+            console.log(this.materias)
+          )
+        )
         .catch(function(error) {
-          console.log(error);
+          this.mensaje = "por favor revise los campos"
+          
         });
-        this.id = 0,
-        this.name = "",
-        this.description  = "",
-        this.timeMovie = "",
-        this.category = "",
-        this.trailer = "",
-        this.suggestions = null,
-        this.active = 1,
-        this.cover = "",
-        this.favorite = 0,
-        this.creationDate = ""
     },
+    getMaterias(){
+        axios
+        .get("http://localhost:3000/materias", {})
+          .then(
+            (response) => (
+              (this.materias = response.data),
+              console.log(this.materias)
+            )
+          );
+    }
   },
+  mounted(){
+      this.getMaterias()
+  }
 };
 </script>
 <style lang="scss">
 .title-home{
     text-align: center;
 }
-.col-category {
+.col-edad {
   text-align: center;
   .route-circle {
     text-decoration: none;
@@ -154,7 +106,7 @@ export default {
         margin: auto;
       }
     }
-    .name-category {
+    .nombre-edad {
       color: #000 !important;
       text-align: center;
       text-transform: uppercase;

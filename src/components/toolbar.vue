@@ -1,19 +1,6 @@
 <template>
   <div>
-    <v-app-bar app dark>
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://e7.pngegg.com/pngimages/327/703/png-clipart-cinema-film-moveis-logo-film.png"
-          transition="scale-transition"
-          width="80"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
+    <v-app-bar  app dark>
       <router-link
         class="links-toolbar"
         v-for="(route, index) in routers"
@@ -34,14 +21,18 @@ export default {
   data() {
     return {
       routers: [
-        { name: "home", path: "/" },
-        { name: "peliculas", path: "/peliculas" }
+        { name: "crear Profesor", path: "/" },
+        { name: "ver profesores", path: "/teachers" },
+        { name: "ver materias", path: "/materias" }
       ],
     };
   },
 };
 </script>
 <style lang="scss">
+.v-toolbar__content, .v-toolbar__extension{
+  justify-content: flex-end;
+}
 .links-toolbar{
     color: #fff !important;
     text-decoration: none;

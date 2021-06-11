@@ -10,35 +10,20 @@ const routes = [
     component: () => import('../views/Home.vue')
   },
   {
-    path: '/peliculas',
-    name: 'peliculas',
-    component: () => import('../views/Peliculas.vue')
+    path: '/teachers',
+    name: 'teachers',
+    component: () => import('../views/teachers.vue')
   },
   {
-    path: '/peliculas/:id',
-    name: 'infoPelicula',
-    component: () => import('../views/infoPelicula.vue')
+    path: '/teacher/:id',
+    name: 'infoTeacher',
+    component: () => import('../views/infoTeacher.vue')
   },
   {
-    path: '/categorias/:category',
-    name: 'categorias',
-    component: () => import('../views/categorias.vue')
+    path: '/materias',
+    name: 'materias',
+    component: () => import('../views/materias.vue')
   },
-  {
-    path: '/populares',
-    name: 'populares',
-    component: () => import('../views/Populares.vue')
-  },
-  {
-    path: '/Recientes',
-    name: 'Recientes',
-    component: () => import('../views/Recientes.vue')
-  },
-  {
-    path: '/favoritas',
-    name: 'favoritas',
-    component: () => import('../views/favoritas.vue')
-  }
 ]
 
 const router = new VueRouter({
